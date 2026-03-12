@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 全局 ──────────────────────────────── */
+* { box-sizing: border-box; }
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f5f6fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #1a1a2e;
+  font-size: 15px;
+}
+
+/* ── 滚动条 ────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ── 侧边栏导航链接 ─────────────────────── */
+.nav-link {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+         text-gray-600 transition-all duration-150 cursor-pointer select-none;
+}
+.nav-link:hover { @apply bg-gray-100 text-gray-900; }
+.nav-link.active {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  @apply text-white shadow-sm;
+}
+
+/* ── 卡片 ──────────────────────────────── */
+.jc-card {
+  @apply bg-white rounded-2xl border border-gray-100 shadow-sm
+         hover:shadow-md transition-shadow duration-200;
+}
+
+/* ── 按钮 ──────────────────────────────── */
+.jc-btn-primary {
+  @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium
+         text-white transition-all duration-150 cursor-pointer select-none;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+.jc-btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.jc-btn-primary:active { transform: translateY(0); }
+.jc-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.jc-btn-ghost {
+  @apply inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium
+         text-gray-600 bg-transparent transition-all duration-150 cursor-pointer select-none;
+}
+.jc-btn-ghost:hover { @apply bg-gray-100 text-gray-800; }
+
+.jc-btn-danger {
+  @apply inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium
+         text-red-600 bg-transparent transition-all duration-150 cursor-pointer select-none;
+}
+.jc-btn-danger:hover { @apply bg-red-50; }
+
+/* ── 表单控件 ──────────────────────────── */
+.jc-input {
+  @apply w-full px-3 py-2 rounded-xl border border-gray-200 text-sm
+         bg-white outline-none transition-all duration-150;
+}
+.jc-input:focus { @apply border-indigo-400 ring-2 ring-indigo-100; }
+
+.jc-textarea {
+  @apply w-full px-3 py-2 rounded-xl border border-gray-200 text-sm
+         bg-white outline-none resize-none transition-all duration-150;
+}
+.jc-textarea:focus { @apply border-indigo-400 ring-2 ring-indigo-100; }
+
+.jc-select {
+  @apply w-full px-3 py-2 rounded-xl border border-gray-200 text-sm
+         bg-white outline-none transition-all duration-150;
+}
+.jc-select:focus { @apply border-indigo-400 ring-2 ring-indigo-100; }
+
+/* ── 消息气泡 ──────────────────────────── */
+.bubble-user {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  @apply text-white rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm;
+}
+.bubble-ai {
+  @apply bg-white text-gray-800 rounded-2xl rounded-tl-sm px-4 py-3
+         border border-gray-100 shadow-sm;
+}
+
+/* ── 消息入场动画 ──────────────────────── */
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.msg-enter { animation: msgIn 0.2s ease-out; }
+
+/* ── 弹窗遮罩 ──────────────────────────── */
+.modal-mask {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+}
+.modal-panel {
+  @apply bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto;
+}
+
+/* ── 徽章 ──────────────────────────────── */
+.jc-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+.jc-badge-purple { @apply bg-indigo-50 text-indigo-600; }
+.jc-badge-green  { @apply bg-green-50  text-green-600; }
+.jc-badge-gray   { @apply bg-gray-100  text-gray-600; }

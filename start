@@ -1,0 +1,12 @@
+npm run dev
+docker compose up -d
+mvn clean compile
+mvn spring-boot:run
+netstat -ano | findstr :8080
+taskkill /PID 2352 /F
+taskkill /F /IM python.exe
+kill-port 5173
+
+docker compose up -d postgres
+venv\Scripts\python.exe -m uvicorn app.main:app --port 8000
+npm --prefix ui run dev
